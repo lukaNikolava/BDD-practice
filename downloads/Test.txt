@@ -1,0 +1,433 @@
+{
+	"info": {
+		"_postman_id": "22c86911-23f4-47a6-b770-12e2e50ffa2d",
+		"name": "Student",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6854324"
+	},
+	"item": [
+		{
+			"name": "Validations",
+			"item": [
+				{
+					"name": "GetSingleStudent",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(\"Request level\")"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(\"R---Request level\")//single status code\r",
+									"pm.test(\"Code Check\",() => \r",
+									"{\r",
+									"pm.response.to.have.status(200);\r",
+									"\r",
+									"}\r",
+									");\r",
+									"//Multiple status code\r",
+									"pm.test(\"Succesfull Code Range\",() => \r",
+									"{\r",
+									"pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"\r",
+									"}\r",
+									");\r",
+									"//presence of header\r",
+									"pm.test(\"Header check\",() => \r",
+									"{\r",
+									"pm.response.to.have.header(\"Content-Type\");\r",
+									"\r",
+									"}\r",
+									");\r",
+									"//value of header\r",
+									"pm.test(\"Succesfull header Range\",() => \r",
+									"{\r",
+									"pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json')\r",
+									"}\r",
+									");\r",
+									"// cookie name is present or not\r",
+									"\r",
+									"pm.test(\"Cookie name\",() => \r",
+									"{\r",
+									"pm.expect(pm.cookies.has('language')).to.be.true;\r",
+									"}\r",
+									");\r",
+									"//Cookie value is present or not\r",
+									"pm.test(\"Cookie Value\",() => \r",
+									"{\r",
+									"pm.expect(pm.cookies.get('language')).to.eql('en-gb')\r",
+									"}\r",
+									");\r",
+									"\r",
+									"//response time\r",
+									"pm.test(\"Response time\",() => \r",
+									"{\r",
+									"pm.expect(pm.response.responseTime).to.be.below(20);\r",
+									"}\r",
+									");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSingleStudent--ResponseBody",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const data = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Validating Response body\",() =>\r",
+									"{\r",
+									"pm.expect(data).to.be.an(\"object\");\r",
+									"//pm.expect(varji.id).to.be.a(\"number\");\r",
+									"pm.expect(data.name).to.be.a(\"string\");\r",
+									"pm.expect(data.location).to.be.a(\"string\");\r",
+									"pm.expect(data.id).to.be.a(\"string\");\r",
+									"pm.expect(data.courses).to.be.an(\"array\");\r",
+									"}\r",
+									");\r",
+									"\r",
+									"pm.test(\"Validating value of variables\",() =>\r",
+									"{\r",
+									"pm.expect(data.courses).to.include('Java');\r",
+									"pm.expect(data.courses).to.have.members(['Java','Selenium']);\r",
+									"}\r",
+									");\r",
+									"\r",
+									"pm.test(\"Validating value against variables\",() =>\r",
+									"{\r",
+									"pm.expect(data.name).to.eql(\"John\");\r",
+									"pm.expect(data.location).to.eql(\"Murgeshpalyal\");\r",
+									"pm.expect(data.id).to.eql('1');\r",
+									"pm.expect(data.courses[0]).to.eql('Java');\r",
+									"pm.expect(data.courses[1]).to.eql('Selenium');\r",
+									"}\r",
+									");\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSingleStudent--array",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const data = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Validating Response body\",() =>\r",
+									"{\r",
+									"pm.expect(data[0]).to.be.an(\"object\");\r",
+									"//pm.expect(varji.id).to.be.a(\"number\");\r",
+									"pm.expect(data[0].name).to.be.a(\"string\");\r",
+									"pm.expect(data[0].location).to.be.a(\"string\");\r",
+									"pm.expect(data[0].id).to.be.a(\"string\");\r",
+									"pm.expect(data[0].courses).to.be.an(\"array\");\r",
+									"}\r",
+									");\r",
+									"\r",
+									"pm.test(\"Validating value of variables\",() =>\r",
+									"{\r",
+									"pm.expect(data[1].courses[1]).to.include('Python');\r",
+									"pm.expect(data[1].courses).to.have.members(['JavaScript','Python']);\r",
+									"}\r",
+									");\r",
+									"\r",
+									"pm.test(\"Validating value against variables\",() =>\r",
+									"{\r",
+									"pm.expect(data[0].name).to.eql(\"John\");\r",
+									"pm.expect(data[0].location).to.eql(\"Murgeshpalya\");\r",
+									"pm.expect(data[0].id).to.eql('1');\r",
+									"pm.expect(data[0].courses[0]).to.eql('Java');\r",
+									"pm.expect(data[0].courses[1]).to.eql('Selenium');\r",
+									"}\r",
+									");\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"console.log(\"Folder level\")"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"console.log(\"R---Folder level\")"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "New Folder",
+			"item": []
+		},
+		{
+			"name": "GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							" const d = pm.response.json();\r",
+							" pm.test(\"Status code validate\", () =>\r",
+							"{\r",
+							"    \r",
+							"    \r",
+							"pm.expect(d[0]).to.be.an(\"object\");\r",
+							"pm.expect(d[0].name).to.be.a(\"string\");\r",
+							"pm.expect(d[0].courses[0]).to.include('Java');\r",
+							"\r",
+							"\r",
+							"pm.expect(d[0].courses[0]).to.eql('Java');\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"}\r",
+							");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"PM\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_dev_env}}/api/users/844",
+					"host": [
+						"{{url_dev_env}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"844"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/844",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"844"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=111",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "111"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"console.log(\"Collection level\")"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"console.log(\"R---Collection level\")"
+				]
+			}
+		}
+	]
+}
