@@ -50,7 +50,7 @@ public class DownloadTest extends BaseTest {
             }
         }
 
-        // Assert file download
+
         Assert.assertTrue(file.exists(), "File is not downloaded!");
     }
 
