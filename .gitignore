@@ -1,0 +1,52 @@
+# Ignore Maven build output
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IntelliJ IDEA files
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Maven Wrapper
+.mvn/
+
+# Eclipse IDE files
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# NetBeans IDE files
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+
+# VS Code files
+.vscode/
+
+# Mac OS files
+.DS_Store
+
+# Log files
+*.log
+
+# Allure reports
+allure-results/
+allure-report/
+
+# Other IDEs
+*.swp
+
+# Ignore .env file
+.env
+
+downloads/
