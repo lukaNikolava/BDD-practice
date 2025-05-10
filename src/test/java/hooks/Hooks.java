@@ -8,18 +8,18 @@ import utils.EnvDataReader;
 
 public class Hooks {
 
-    protected final Browser browser = AqualityServices.getBrowser();
+	protected final Browser browser = AqualityServices.getBrowser();
 
-    @Before
-    public void setup(){
-        browser.maximize();
-        browser.goTo(EnvDataReader.getEnvData().getHost());
-    }
+	@Before
+	public void setup() {
+		browser.maximize();
+		browser.goTo(EnvDataReader.getEnvData().getHost());
+	}
 
-    @After
-    public void teardown(){
-        if (AqualityServices.isBrowserStarted()) {
-            browser.quit();
-        }
-    }
+	@After
+	public void teardown() {
+		if (AqualityServices.isBrowserStarted()) {
+			browser.quit();
+		}
+	}
 }

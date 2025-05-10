@@ -4,5 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class EnvData {
-    private String host;
+
+	private String host;
+
 }
