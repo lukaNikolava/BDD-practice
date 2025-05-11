@@ -12,7 +12,7 @@ public class DownloadAsPdfPage extends Form {
 	private final ITextBox fileName = getElementFactory().getTextBox(By.className("mw-electronpdfservice-selection-label-desc"), "File Name");
 
 	public DownloadAsPdfPage() {
-		super(By.xpath("//h1[@id='firstHeading' and normalize-space(text())='Download as PDF']"), "Download As Pdf Page");
+		super(By.xpath("//div[@id='bodyContent']//form[@method='POST']"), "Download As Pdf Page");
 	}
 
 	@Step("Click on the 'Download' button")

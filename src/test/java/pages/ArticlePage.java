@@ -14,7 +14,7 @@ public class ArticlePage extends Form {
 	private final ILabel searchedText = getElementFactory().getLabel(By.id("firstHeading"), "Searched Text");
 
 	public ArticlePage() {
-		super(By.id("bodyContent"), "Article Page");
+		super(By.xpath("//div[@id='mw-content-text']//table[contains(@class, 'infobox') and contains(@class, 'biography')] "), "Article Page");
 	}
 
 	@Step("Click on Tools dropdown button")
