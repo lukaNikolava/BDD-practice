@@ -16,7 +16,7 @@ public class MainPage extends Form {
 	private final IComboBox languageDropdown = getElementFactory().getComboBox(By.id("searchLanguage"), "Language Drop Down", ElementState.EXISTS_IN_ANY_STATE);
 
 	public MainPage() {
-		super(By.xpath("//main//div[@role='search']//div[@id='search-input']"), "Main Page");
+		super(By.xpath("//div[@role='search']//div[@id='search-input']"), "Main Page");
 	}
 
 	@Step("Enter search text: {searchText}")

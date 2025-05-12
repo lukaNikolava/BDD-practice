@@ -10,6 +10,6 @@ public class InformationPageSteps {
 
 	@Then("The information page for {string} article is displayed")
 	public void theInformationPageIsDisplayedSuccessfully(String searchedText) {
-		Assert.assertTrue(informationPage.articleInfoText().contains(searchedText), "Information page for " + searchedText + " is not displayed correctly.");
+		Assert.assertTrue(informationPage.getArticleInfoText().contains(searchedText), "Information page for " + searchedText + " is not displayed correctly.");
 	}
 }

@@ -18,6 +18,6 @@ public class DownloadAsPdfPageSteps {
 	@Then("the file with the correct name is downloaded successfully")
 	public void theFileWithCorrectNameIsDownloaded() {
 		String expectedFileName = downloadAsPdfPage.getFileName();
-		Assert.assertTrue(FileUtils.isFileExist(expectedFileName), "File '" + expectedFileName + "' was not downloaded.");
+		Assert.assertTrue(FileUtils.isFileDownloaded(expectedFileName), "File '" + expectedFileName + "' was not downloaded.");
 	}
 }

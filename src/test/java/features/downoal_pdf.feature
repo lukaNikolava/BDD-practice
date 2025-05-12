@@ -4,7 +4,7 @@ Feature: Download PDF
   So that I can save it for offline reading
 
   Scenario: Search and download file as PDF
-    When I open the main page
+    Then The main page is displayed
     And I input "Albert Einstein" in the search field
     And I click the submit button
     When I click the Tools menu on the article page

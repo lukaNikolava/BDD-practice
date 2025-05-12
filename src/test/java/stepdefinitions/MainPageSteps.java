@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import constants.Languages;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pages.MainPage;
@@ -11,7 +12,7 @@ public class MainPageSteps {
 
 	private final MainPage mainPage = new MainPage();
 
-	@When("I open the main page")
+	@Then("The main page is displayed")
 	public void isMainPageDisplayed() {
 		step("Checking if main page is displayed");
 		Assert.assertTrue(mainPage.state().waitForDisplayed(), "Main page is not displayed");
@@ -27,8 +28,9 @@ public class MainPageSteps {
 		mainPage.clickSubmitBtn();
 	}
 
-	@When("I change the search language")
-	public void iChangeSearchLanguage() {
-		mainPage.selectLanguage(Languages.SPANISH);
+	@When("I change the search language to {string}")
+	public void iChangeTheSearchLanguageTo(String languageName) {
+		Languages language = Languages.valueOf(languageName.toUpperCase());
+		mainPage.selectLanguage(language);
 	}
 }
