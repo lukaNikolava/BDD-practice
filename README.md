@@ -30,7 +30,7 @@ This project contains automated test scenarios for verifying key functionalities
 - **Cucumber**
 - **TestNG**
 - **Maven**
-- **Aquality Framework** (if you're using it)
+- **Aquality Framework**
 
 ---
 
