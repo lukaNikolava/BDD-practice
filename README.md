@@ -27,6 +27,7 @@ This project contains automated test scenarios for verifying key functionalities
 
 - **Java**
 - **Selenium WebDriver**
+- **Allure**
 - **Cucumber**
 - **TestNG**
 - **Maven**
