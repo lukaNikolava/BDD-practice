@@ -14,7 +14,7 @@ This project contains automated test scenarios for verifying key functionalities
 ### 2. Search Articles in Different Languages
 - Change the search language
 - Search for content in a specific language (e.g., Spanish)
-- Verify the article page opens in the selected language
+- Verify the article page opens in the selected languagea
 
 ### 3. Download Article as PDF
 - Search for an article
@@ -33,6 +33,14 @@ This project contains automated test scenarios for verifying key functionalities
 - **Aquality Framework**
 
 ---
+
+## 🔁 CI/CD with Jenkins
+
+This project is integrated with **Jenkins** for continuous integration and test automation.
+
+- ✅ Tests are triggered automatically on code push
+- ✅ Test reports are generated and archived after each run
+- ✅ Configured as a Jenkins Freestyle Job
 
 ## 🚀 Getting Started
 
